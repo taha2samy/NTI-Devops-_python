@@ -24,38 +24,12 @@ def ssh_client(hostname, username, password):
             print(output)
             output_content += output + "\n"
 
-        # Save output to HTML
-        save_output_to_html(output_content)
-
     except Exception as e:
         print(f"Connection failed: {e}")
     finally:
         client.close()
         print("Connection closed.")
 
-def save_output_to_html(output_content):
-    # Create an HTML file
-    html_content = f"""
-    <html>
-    <head>
-        <title>SSH Output</title>
-        <style>
-            body {{ font-family: Arial, sans-serif; }}
-            pre {{ white-space: pre-wrap; background-color: #f0f0f0; padding: 10px; border-radius: 5px; }}
-        </style>
-    </head>
-    <body>
-        <h2>SSH Command Output</h2>
-        <pre>{output_content}</pre>
-    </body>
-    </html>
-    """
-
-    # Save to a file
-    with open("ssh_output.html", "w") as file:
-        file.write(html_content)
-
-    print("Output saved as ssh_output.html")
 
 if __name__ == "__main__":
     hostname = input("Enter hostname: ")  # Your server's IP address
