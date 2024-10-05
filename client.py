@@ -19,7 +19,7 @@ async def collect_system_info():
             "swap": psutil.swap_memory()._asdict(),
             "disk": {disk.device: psutil.disk_usage(disk.mountpoint)._asdict() for disk in psutil.disk_partitions()},
             "network": psutil.net_io_counters()._asdict(),
-            "boot_time": datetime.fromtimestamp(psutil.boot_time()).isoformat()  # إضافة وقت الإقلاع
+            "boot_time": datetime.fromtimestamp(psutil.boot_time()).isoformat()  
         }
         message_with_timestamp = {
             "timestamp": datetime.now().isoformat(),
