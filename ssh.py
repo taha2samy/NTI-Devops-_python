@@ -2,7 +2,6 @@ import paramiko
 
 def ssh_client(hostname, username, password):
     try:
-        # Create SSH client
         client = paramiko.SSHClient()
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         
@@ -13,12 +12,10 @@ def ssh_client(hostname, username, password):
         output_content = ""
 
         while True:
-            # Get command input from user
             command = input("Enter command (or 'exit' to quit): ")
             if command.lower() == 'exit':
                 break
             
-            # Execute command
             stdin, stdout, stderr = client.exec_command(command)
             output = stdout.read().decode('utf-8') + stderr.read().decode('utf-8')
             print(output)

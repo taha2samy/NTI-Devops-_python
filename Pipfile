@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 psutil = "*"
 paramiko = "*"
+fabric = "*"
 
 [dev-packages]
 
