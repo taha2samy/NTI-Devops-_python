@@ -1,4 +1,4 @@
-| ![Image 1](Day%201/Report/1.svg) | ![Image 2](Day%201/Report/2.png) | ![Image 3](Day%201/Report/3.svg) |
+| ![Image 1](1.svg) | ![Image 2](2.png) | ![Image 3](3.svg) |
 |--------------------------------------|--------------------------------------|--------------------------------------|
 
 # Trak DevOps Automation **2024/9**
