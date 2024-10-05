@@ -8,6 +8,7 @@ queue = asyncio.Queue()
 
 async def collect_system_info():
         system_info = {
+            "machine_ip": socket.gethostbyname(socket.gethostname()),
             "cpu": {
                 "usage_percent": psutil.cpu_percent(interval=1),
                 "cores_logical": psutil.cpu_count(logical=True),
@@ -18,6 +19,7 @@ async def collect_system_info():
             "swap": psutil.swap_memory()._asdict(),
             "disk": {disk.device: psutil.disk_usage(disk.mountpoint)._asdict() for disk in psutil.disk_partitions()},
             "network": psutil.net_io_counters()._asdict(),
+            "boot_time": datetime.fromtimestamp(psutil.boot_time()).isoformat()  # إضافة وقت الإقلاع
         }
         message_with_timestamp = {
             "timestamp": datetime.now().isoformat(),
