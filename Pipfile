@@ -8,6 +8,7 @@ psutil = "*"
 paramiko = "*"
 fabric = "*"
 fuzzywuzzy = "*"
+tabulate = "*"
 
 [dev-packages]
 
