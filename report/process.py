@@ -2,7 +2,6 @@ import psutil
 from tabulate import tabulate
 
 def check_process(process_name):
-    """Check if a process is running and display its information in a table."""
     process_found = False
     process_info_list = []
 
@@ -17,12 +16,17 @@ def check_process(process_name):
                     proc.info['create_time'],
                     proc.info['memory_info'].rss // (1024 * 1024)  # Convert to MB for readability
                 ])
-        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+
+        except (psutil.NoSuchProcess):
+            continue
+        except(psutil.AccessDenied):
             continue
 
+
+
     if process_found:
-        # Print the process information in a table format
-        print(tabulate(process_info_list, headers=["Process ID", "Process Name", "Status", "Created Time", "Memory (MB)"], tablefmt="grid"))
+        
+        print(tabulate(process_info_list, headers=["Process ID", "Process Name", "Status", "Created Time", "Memory (MB)"], tablefmt="latex"))
     else:
         print(f"No process found with the name '{process_name}'.")
 
@@ -30,5 +34,4 @@ def main():
     process_name = input("Enter the name of the process to check: ")
     check_process(process_name)
 
-if __name__ == "__main__":
-    main()
+main()

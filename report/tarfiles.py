@@ -26,7 +26,7 @@ def extract_files(tar_filename, extract_path):
 def add_files_to_archive(tar_filename, file_paths):
     """Add files to an existing tar archive."""
     try:
-        with tarfile.open(tar_filename, 'a') as tar:  # Open in append mode
+        with tarfile.open(tar_filename, 'a') as tar:  
             for file_path in file_paths:
                 tar.add(file_path, arcname=os.path.basename(file_path))
             print(f"Added files to {tar_filename}")
